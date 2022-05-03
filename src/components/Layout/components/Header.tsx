@@ -20,7 +20,7 @@ const Header = (): JSX.Element => (
         lineHeight: "40px",
       })}
     >
-      Frontend
+      Guild voting
     </Title>
     <DynamicConnectButton />
   </MantineHeader>
