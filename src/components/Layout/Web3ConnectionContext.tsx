@@ -67,10 +67,17 @@ const Web3ConnectionProvider = ({
               variant="default"
               size="lg"
               fullWidth
+              sx={(theme) => ({
+                fontSize: theme.fontSizes.md,
+              })}
               disabled={
                 !connector.ready ||
                 (isConnecting && connector.id === pendingConnector?.id)
               }
+              loading={isConnecting && connector.id === pendingConnector?.id}
+              loaderProps={{
+                size: "xs",
+              }}
               onClick={() => connect(connector)}
             >
               {connector.name}
