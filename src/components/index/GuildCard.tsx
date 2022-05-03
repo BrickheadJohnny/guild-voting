@@ -14,11 +14,13 @@ const GuildCard = ({ guild }: Props): JSX.Element => (
       p="lg"
       sx={(theme) => ({
         textDecoration: "none",
+        backgroundColor: theme.colors.dark[7],
         "&:hover": {
           textDecoration: "none",
-          backgroundColor: theme.colors.dark[5],
+          backgroundColor: theme.colors.dark[6],
         },
       })}
+      withBorder
     >
       <Group spacing={20} noWrap>
         <Box
@@ -64,10 +66,22 @@ const GuildCard = ({ guild }: Props): JSX.Element => (
             {guild.name}
           </Title>
           <Group spacing={5}>
-            <Badge size="sm" color="dark">{`${guild.memberCount} member${
+            <Badge
+              size="sm"
+              sx={(theme) => ({
+                backgroundColor: theme.colors.dark[6],
+                color: theme.colors.dark[1],
+              })}
+            >{`${guild.memberCount} member${
               guild.memberCount > 1 ? "s" : ""
             }`}</Badge>
-            <Badge size="sm" color="dark">{`${guild.roles?.length} member${
+            <Badge
+              size="sm"
+              sx={(theme) => ({
+                backgroundColor: theme.colors.dark[6],
+                color: theme.colors.dark[1],
+              })}
+            >{`${guild.roles?.length} member${
               guild.roles?.length > 1 ? "s" : ""
             }`}</Badge>
           </Group>
