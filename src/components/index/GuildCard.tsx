@@ -1,9 +1,9 @@
 import { Badge, Box, Card, Group, Image, Title } from "@mantine/core"
 import Link from "next/link"
-import { Guild } from "types"
+import { GuildSimple } from "types"
 
 type Props = {
-  guild: Guild
+  guild: GuildSimple
 }
 
 const GuildCard = ({ guild }: Props): JSX.Element => (

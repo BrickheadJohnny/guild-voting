@@ -1,6 +1,6 @@
 import useSWR from "swr"
 import { useAccount } from "wagmi"
-import { Guild } from "../types"
+import { GuildSimple } from "../types"
 
 const fetcher = (endpoint: string) =>
   fetch(`${process.env.NEXT_PUBLIC_API_URL}${endpoint}`)
@@ -9,7 +9,7 @@ const fetcher = (endpoint: string) =>
 
 const useMyGuilds = () => {
   const { data } = useAccount()
-  return useSWR<Guild[]>(
+  return useSWR<GuildSimple[]>(
     data?.address ? `/guild/address/${data.address}?include=admin` : null,
     fetcher,
     {
