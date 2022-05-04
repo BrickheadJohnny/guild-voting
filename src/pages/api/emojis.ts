@@ -20,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           group: emoji.group,
         }))
     )
-    .catch(() => ({}))
+    .catch(() => [])
 
   res.status(200).json(data)
 }
