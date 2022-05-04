@@ -22,6 +22,7 @@ import useCreatePoll from "hooks/useCreatePoll"
 import useDiscordServerData from "hooks/useDiscordServerData"
 import useEmojis from "hooks/useEmojis"
 import useGuild from "hooks/useGuild"
+import useMyGuilds from "hooks/useMyGuilds"
 import { useEffect, useMemo } from "react"
 import { Check, Plus, Rocket, Trash } from "tabler-icons-react"
 import { CreateVotingForm } from "types"
@@ -37,8 +38,9 @@ const currentDate = new Date()
 
 const Guild = (): JSX.Element => {
   const { data: account, isLoading: isAccountLoading } = useAccount()
+  const { data: guilds } = useMyGuilds()
   const {
-    data: { admins, name, platforms, roles },
+    data: { name, urlName, platforms, roles },
     isValidating,
     error,
   } = useGuild()
@@ -139,9 +141,7 @@ const Guild = (): JSX.Element => {
         <Alert title="Uh-oh!" color="red">
           Could not fetch guild.
         </Alert>
-      ) : !admins?.find(
-          (admin) => admin.address.toLowerCase() === account?.address?.toLowerCase()
-        ) ? (
+      ) : !guilds?.find((g) => g.urlName === urlName) ? (
         <Alert title="Uh-oh!" color="red">
           Seems like this isn't your guild.
         </Alert>
