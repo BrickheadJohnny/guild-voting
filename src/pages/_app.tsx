@@ -1,4 +1,5 @@
 import { MantineProvider } from "@mantine/core"
+import { NotificationsProvider } from "@mantine/notifications"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import { WagmiProvider } from "wagmi"
@@ -23,13 +24,15 @@ const App = ({ Component, pageProps }: AppProps) => (
         colorScheme: "dark",
       }}
     >
-      <WagmiProvider client={client}>
-        <Web3ConnectionProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </Web3ConnectionProvider>
-      </WagmiProvider>
+      <NotificationsProvider>
+        <WagmiProvider client={client}>
+          <Web3ConnectionProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </Web3ConnectionProvider>
+        </WagmiProvider>
+      </NotificationsProvider>
     </MantineProvider>
   </>
 )

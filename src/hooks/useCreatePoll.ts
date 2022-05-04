@@ -1,6 +1,6 @@
+import { showNotification, updateNotification } from "@mantine/notifications"
 import { useState } from "react"
 import { CreateVotingForm, CreateVotingPayload } from "types"
-import { useAccount, useSignMessage } from "wagmi"
 
 const preparePayload = (data: CreateVotingForm): CreateVotingPayload => {
   const [startDate, expDate] = data.pollDuration
@@ -25,14 +25,24 @@ const preparePayload = (data: CreateVotingForm): CreateVotingPayload => {
   }
 }
 
-const useCreatePoll = () => {
-  const { data: account } = useAccount()
-  const { signMessageAsync } = useSignMessage()
+const useCreatePoll = (onSuccess?: () => void) => {
+  // const { data: account } = useAccount()
+  // const { signMessageAsync } = useSignMessage()
 
   const [isLoading, setIsLoading] = useState(false)
 
   const onSubmit = async (data: CreateVotingForm) => {
     setIsLoading(true)
+
+    showNotification({
+      id: "creating-poll",
+      loading: true,
+      title: "Creating poll",
+      message: "...for your amazing guild members",
+      autoClose: false,
+      disallowClose: true,
+    })
+
     const body = preparePayload(data)
 
     // Preparing the validation object
@@ -64,8 +74,20 @@ const useCreatePoll = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .catch((error) => ({ error }))
+      .then((res) => {
+        onSuccess?.()
+        return res.json()
+      })
+      .catch((error) => {
+        updateNotification({
+          id: "creating-poll",
+          color: "red",
+          title: "Uh-oh!",
+          message: "An error occurred",
+          autoClose: 4000,
+        })
+        return { error }
+      })
       .finally(() => setIsLoading(false))
   }
 

@@ -14,6 +14,10 @@ const client = createWagmiClient({
     const rpcUrl = currentChain.rpcUrls.default
     return [
       // new MetaMaskConnector({ chains }),
+      new InjectedConnector({
+        chains,
+        options: { name: "Injected" },
+      }),
       new CoinbaseWalletConnector({
         chains,
         options: {
@@ -28,10 +32,6 @@ const client = createWagmiClient({
           qrcode: true,
           rpc: { [currentChain.id]: rpcUrl },
         },
-      }),
-      new InjectedConnector({
-        chains,
-        options: { name: "Injected" },
       }),
     ]
   },

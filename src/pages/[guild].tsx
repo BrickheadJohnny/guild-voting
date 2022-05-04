@@ -16,12 +16,14 @@ import {
 } from "@mantine/core"
 import { DateRangePicker } from "@mantine/dates"
 import { formList, useForm } from "@mantine/form"
+import { updateNotification } from "@mantine/notifications"
+import SelectItemWithDescription from "components/Select/SelectItemWithDescription"
 import useCreatePoll from "hooks/useCreatePoll"
 import useDiscordServerData from "hooks/useDiscordServerData"
 import useEmojis from "hooks/useEmojis"
 import useGuild from "hooks/useGuild"
 import { useEffect, useMemo } from "react"
-import { Plus, Rocket, Trash } from "tabler-icons-react"
+import { Check, Plus, Rocket, Trash } from "tabler-icons-react"
 import { CreateVotingForm } from "types"
 import { useAccount } from "wagmi"
 
@@ -105,7 +107,16 @@ const Guild = (): JSX.Element => {
 
   const { data: emojis, isValidating: emojisValidating } = useEmojis()
 
-  const { onSubmit, isLoading } = useCreatePoll()
+  const { onSubmit, isLoading } = useCreatePoll(() =>
+    updateNotification({
+      id: "creating-poll",
+      color: "teal",
+      title: "Success!",
+      message: "Successful poll creation",
+      icon: <Check />,
+      autoClose: 4000,
+    })
+  )
 
   return (
     <Container size="xs" py={16}>
@@ -209,12 +220,12 @@ const Guild = (): JSX.Element => {
                     }
                     data={
                       pickableRequirements?.map((req) => ({
-                        label: `${req.name} (${req.data.minAmount}${
-                          req.data.maxAmount ? ` - ${req.data.maxAmount}` : ""
-                        })`,
+                        label: req.symbol,
+                        description: `on ${req.chain}`,
                         value: req.id,
                       })) ?? []
                     }
+                    itemComponent={SelectItemWithDescription}
                     styles={(theme) => ({
                       dropdown: {
                         borderWidth: 1,
