@@ -1,5 +1,6 @@
 import { Header as MantineHeader, Title } from "@mantine/core"
 import dynamic from "next/dynamic"
+import Link from "next/link"
 
 const DynamicConnectButton = dynamic(() => import("./ConnectButton"), { ssr: false })
 
@@ -13,15 +14,18 @@ const Header = (): JSX.Element => (
       justifyContent: "space-between",
     }}
   >
-    <Title
-      sx={(theme) => ({
-        fontSize: theme.fontSizes.xl,
-        height: 40,
-        lineHeight: "40px",
-      })}
-    >
-      Guild voting
-    </Title>
+    <Link href="/" passHref>
+      <Title
+        sx={(theme) => ({
+          fontSize: theme.fontSizes.xl,
+          height: 40,
+          lineHeight: "40px",
+          cursor: "pointer",
+        })}
+      >
+        Guild voting
+      </Title>
+    </Link>
     <DynamicConnectButton />
   </MantineHeader>
 )

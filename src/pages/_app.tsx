@@ -9,7 +9,7 @@ import { client } from "../connectors"
 const App = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
-      <title>Page title</title>
+      <title>Guild voting</title>
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width"

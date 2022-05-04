@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         </Grid.Col>
       ) : guilds?.length ? (
         guilds?.map((guild) => (
-          <Grid.Col span={1} key={guild.id}>
+          <Grid.Col span={1} key={guild.urlName}>
             <GuildCard guild={guild} />
           </Grid.Col>
         ))

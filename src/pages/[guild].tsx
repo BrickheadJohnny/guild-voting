@@ -34,7 +34,7 @@ const platformTypeNames = {
 const currentDate = new Date()
 
 const Guild = (): JSX.Element => {
-  const { data: account } = useAccount()
+  const { data: account, isLoading: isAccountLoading } = useAccount()
   const {
     data: { name, platforms, roles },
     isValidating,
@@ -50,9 +50,9 @@ const Guild = (): JSX.Element => {
   const form = useForm<CreateVotingForm>({
     initialValues: {
       platform: "WEB",
-      platformId: undefined,
-      channelId: undefined,
-      requirementId: undefined,
+      platformId: "",
+      channelId: "",
+      requirementId: 0,
       question: "",
       pollDuration: [
         currentDate,
@@ -98,7 +98,7 @@ const Guild = (): JSX.Element => {
   )
 
   useEffect(() => {
-    if (!platforms) return
+    if (!platforms?.length) return
     form.setFieldValue("platform", platforms?.[0]?.type)
     form.setFieldValue("platformId", platforms?.[0]?.platformId)
   }, [platforms])
@@ -109,11 +109,11 @@ const Guild = (): JSX.Element => {
 
   return (
     <Container size="xs" py={16}>
-      {!account?.address ? (
+      {!account?.address && !isAccountLoading ? (
         <Alert title="Please connect your wallet" color="red">
           Please connect your wallet in order to continue.
         </Alert>
-      ) : isValidating ? (
+      ) : isValidating || isAccountLoading ? (
         <Box
           sx={{
             display: "flex",
@@ -122,9 +122,9 @@ const Guild = (): JSX.Element => {
         >
           <Loader />
         </Box>
-      ) : error ? (
+      ) : error || !name ? (
         <Alert title="Uh-oh!" color="red">
-          Unfortunately we couldn't fetch this guild right now.
+          Could not fetch guild.
         </Alert>
       ) : (
         <>
