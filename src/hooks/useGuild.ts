@@ -11,11 +11,15 @@ const useGuild = () => {
   const router = useRouter()
   const urlName = router.query?.guild?.toString()
 
-  return useSWR<Guild | Record<string, any>>(`/guild/${urlName}`, fetcher, {
-    refreshInterval: 0,
-    revalidateOnFocus: false,
-    fallbackData: {},
-  })
+  return useSWR<Guild | Record<string, any>>(
+    urlName ? `/guild/${urlName}` : null,
+    fetcher,
+    {
+      refreshInterval: 0,
+      revalidateOnFocus: false,
+      fallbackData: {},
+    }
+  )
 }
 
 export default useGuild
