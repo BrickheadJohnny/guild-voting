@@ -89,10 +89,10 @@ type Guild = {
     platformName: string
   }[]
   roles: Role[]
-  owner: {
+  admins: {
     id: number
     address: string
-  }
+  }[]
 }
 
 type DiscordServerData = {

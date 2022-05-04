@@ -38,7 +38,7 @@ const currentDate = new Date()
 const Guild = (): JSX.Element => {
   const { data: account, isLoading: isAccountLoading } = useAccount()
   const {
-    data: { name, platforms, roles },
+    data: { admins, name, platforms, roles },
     isValidating,
     error,
   } = useGuild()
@@ -136,6 +136,12 @@ const Guild = (): JSX.Element => {
       ) : error || !name ? (
         <Alert title="Uh-oh!" color="red">
           Could not fetch guild.
+        </Alert>
+      ) : !admins?.find(
+          (admin) => admin.address.toLowerCase() === account?.address?.toLowerCase()
+        ) ? (
+        <Alert title="Uh-oh!" color="red">
+          Seems like this isn't your guild.
         </Alert>
       ) : (
         <>
