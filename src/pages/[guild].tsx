@@ -89,8 +89,10 @@ const Guild = (): JSX.Element => {
     !form?.values?.requirementId ||
     !form?.values?.pollDuration?.every((value) => !!value) ||
     form?.values?.options?.length < 2 ||
-    !form?.values?.options?.every((option) =>
-      !!option.label && platforms?.[0]?.type === "DISCORD" ? !!option.emoji : true
+    !form?.values?.options?.every(
+      (option) =>
+        !!option.label &&
+        (platforms?.[0]?.type === "DISCORD" ? !!option.emoji : true)
     )
 
   const pickableRequirements = useMemo(
