@@ -1,7 +1,6 @@
 import { chain, createWagmiClient, defaultChains } from "wagmi"
 import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet"
 import { InjectedConnector } from "wagmi/connectors/injected"
-import { MetaMaskConnector } from "wagmi/connectors/metaMask"
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect"
 
 const chains = defaultChains
@@ -14,7 +13,7 @@ const client = createWagmiClient({
     const currentChain = chains.find((c) => c.id === chainId) ?? defaultChain
     const rpcUrl = currentChain.rpcUrls.default
     return [
-      new MetaMaskConnector({ chains }),
+      // new MetaMaskConnector({ chains }),
       new CoinbaseWalletConnector({
         chains,
         options: {
