@@ -87,7 +87,9 @@ const Guild = (): JSX.Element => {
     !form?.values?.requirementId ||
     !form?.values?.pollDuration?.every((value) => !!value) ||
     form?.values?.options?.length < 2 ||
-    !form?.values?.options?.every((option) => !!option.label && !!option.emoji)
+    !form?.values?.options?.every((option) =>
+      !!option.label && platforms?.[0]?.type === "DISCORD" ? !!option.emoji : true
+    )
 
   const pickableRequirements = useMemo(
     () =>
@@ -291,7 +293,9 @@ const Guild = (): JSX.Element => {
                           )}
                           placeholder="Select emoji"
                           required
-                          disabled={emojisValidating}
+                          disabled={
+                            emojisValidating || platforms?.[0]?.type === "TELEGRAM"
+                          }
                           searchable
                           nothingFound="No options"
                           data={
