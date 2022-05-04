@@ -216,7 +216,9 @@ const Guild = (): JSX.Element => {
                     label="Pick a requirement"
                     disabled={!pickableRequirements?.length || isValidating}
                     placeholder={
-                      !pickableRequirements?.length ? "No options" : "Select one"
+                      !pickableRequirements?.length
+                        ? "No ERC20 requirements"
+                        : "Select one"
                     }
                     data={
                       pickableRequirements?.map((req) => ({
