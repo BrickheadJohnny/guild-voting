@@ -13,6 +13,7 @@ const useGuild = () => {
 
   return useSWR<Guild | Record<string, any>>(`/guild/${urlName}`, fetcher, {
     refreshInterval: 0,
+    revalidateOnFocus: false,
     fallbackData: {},
   })
 }

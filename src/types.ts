@@ -95,16 +95,42 @@ type Guild = {
   }
 }
 
+type DiscordServerData = {
+  serverIcon: string
+  serverName: string
+  serverId: string
+  roles: any[]
+  isAdmin: boolean
+  membersWithRole: number
+  channels: { id: string; name: string }[]
+}
+
 type CreateVotingForm = {
   platform: "TELEGRAM" | "DISCORD" | "WEB"
   platformId: string
   channelId?: string
   requirementId: number
   question: string
-  startDate: number
-  expDate: number
+  pollDuration: [Date, Date]
+  options: { label: string; emoji: string }[]
+}
+
+type CreateVotingPayload = {
+  platform: "TELEGRAM" | "DISCORD" | "WEB"
+  platformId: string
+  channelId?: string
+  requirementId: number
+  question: string
+  startDate: string
+  expDate: string
   options: string[]
   reactions?: string[]
 }
 
-export type { GuildSimple, Guild, CreateVotingForm }
+export type {
+  GuildSimple,
+  Guild,
+  DiscordServerData,
+  CreateVotingForm,
+  CreateVotingPayload,
+}
