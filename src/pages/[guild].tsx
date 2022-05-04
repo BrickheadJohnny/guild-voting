@@ -17,12 +17,14 @@ import {
 import { DateRangePicker } from "@mantine/dates"
 import { formList, useForm } from "@mantine/form"
 import { updateNotification } from "@mantine/notifications"
+import SelectItemEmoji from "components/Select/SelectItemEmoji"
 import SelectItemWithDescription from "components/Select/SelectItemWithDescription"
 import useCreatePoll from "hooks/useCreatePoll"
-import useDiscordServerData from "hooks/useDiscordServerData"
+import useDiscordChannels from "hooks/useDiscordChannels"
 import useEmojis from "hooks/useEmojis"
 import useGuild from "hooks/useGuild"
 import useMyGuilds from "hooks/useMyGuilds"
+import useServerEmojis from "hooks/useServerEmojis"
 import { useEffect, useMemo } from "react"
 import { Check, Plus, Rocket, Trash } from "tabler-icons-react"
 import { CreateVotingForm } from "types"
@@ -44,12 +46,10 @@ const Guild = (): JSX.Element => {
     isValidating,
     error,
   } = useGuild()
-  const {
-    data: { channels },
-    isValidating: isDiscordServerDataLoading,
-  } = useDiscordServerData(
-    platforms?.[0]?.type === "DISCORD" ? platforms[0].platformId : null
-  )
+  const { data: channels, isValidating: isDiscordChannelsLoading } =
+    useDiscordChannels(
+      platforms?.[0]?.type === "DISCORD" ? platforms[0].platformId : null
+    )
 
   const form = useForm<CreateVotingForm>({
     initialValues: {
@@ -112,6 +112,14 @@ const Guild = (): JSX.Element => {
   }, [platforms])
 
   const { data: emojis, isValidating: emojisValidating } = useEmojis()
+  const { data: serverEmojis, isValidating: serverEmojisValidating } =
+    useServerEmojis(
+      form?.values?.platform === "DISCORD" ? form?.values?.platformId : null
+    )
+  const mergedEmojis = useMemo(
+    () => (serverEmojis ?? [])?.concat(emojis ?? []),
+    [emojis, serverEmojis]
+  )
 
   const { onSubmit, isLoading } = useCreatePoll(() =>
     updateNotification({
@@ -207,8 +215,7 @@ const Guild = (): JSX.Element => {
                     placeholder="Pick one"
                     required={platforms?.[0]?.type === "DISCORD"}
                     disabled={
-                      platforms?.[0]?.type !== "DISCORD" ||
-                      isDiscordServerDataLoading
+                      platforms?.[0]?.type !== "DISCORD" || isDiscordChannelsLoading
                     }
                     data={
                       channels?.map((channel) => ({
@@ -296,17 +303,21 @@ const Guild = (): JSX.Element => {
                           placeholder="Select emoji"
                           required
                           disabled={
-                            emojisValidating || platforms?.[0]?.type === "TELEGRAM"
+                            emojisValidating ||
+                            serverEmojisValidating ||
+                            platforms?.[0]?.type === "TELEGRAM"
                           }
                           searchable
                           nothingFound="No options"
                           data={
-                            emojis?.map((emoji) => ({
-                              label: `${emoji.character} ${emoji.name}`,
+                            mergedEmojis?.map((emoji) => ({
+                              label: emoji.name,
+                              image: emoji.image,
                               value: emoji.character,
                               group: emoji.group,
                             })) ?? []
                           }
+                          itemComponent={SelectItemEmoji}
                           styles={(theme) => ({
                             dropdown: {
                               borderWidth: 1,

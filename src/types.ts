@@ -127,10 +127,16 @@ type CreateVotingPayload = {
   reactions?: string[]
 }
 
+type Channel = { name: string; id: string }
+
+type Emoji = { name: string; image?: string; character: string; group: string }
+
 export type {
   GuildSimple,
   Guild,
   DiscordServerData,
   CreateVotingForm,
   CreateVotingPayload,
+  Channel,
+  Emoji,
 }

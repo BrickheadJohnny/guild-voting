@@ -1,4 +1,5 @@
 import useSWR from "swr"
+import { Emoji } from "types"
 
 const fetcher = (endpoint: string) =>
   fetch(endpoint)
@@ -6,7 +7,7 @@ const fetcher = (endpoint: string) =>
     .catch(() => [])
 
 const useEmojis = () =>
-  useSWR("/api/emojis", fetcher, {
+  useSWR<Emoji[]>("/api/emojis", fetcher, {
     refreshInterval: 0,
     revalidateOnFocus: false,
   })

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 
-type Data = Record<string, { name: string; character: string; group: string }[]>
+type Data = { name: string; character: string; group: string }[]
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const data = await fetch(
@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         .map((emoji) => ({
           name: emoji.slug,
           character: emoji.character,
-          group: emoji.group,
+          group: "Basic emojis",
         }))
     )
     .catch(() => [])
