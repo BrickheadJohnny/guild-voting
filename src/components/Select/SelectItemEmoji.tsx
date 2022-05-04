@@ -10,13 +10,23 @@ interface ItemProps extends React.ComponentPropsWithoutRef<"div"> {
 const SelectItemEmoji = forwardRef<HTMLDivElement, ItemProps>(
   ({ label, image, value, ...others }: ItemProps, ref) => (
     <div ref={ref} {...others}>
-      <Group>
+      <Group sx={{ maxWidth: "100%" }}>
         {image?.startsWith("http") ? (
           <Image src={image} alt={label} width={16} height={16} />
         ) : (
           <Text size="sm">{value}</Text>
         )}
-        <Text size="sm">{label}</Text>
+        <Text
+          size="sm"
+          sx={{
+            maxWidth: "calc(100% - 64px)",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {label}
+        </Text>
       </Group>
     </div>
   )

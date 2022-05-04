@@ -19,9 +19,9 @@ import { formList, useForm } from "@mantine/form"
 import { updateNotification } from "@mantine/notifications"
 import SelectItemEmoji from "components/Select/SelectItemEmoji"
 import SelectItemWithDescription from "components/Select/SelectItemWithDescription"
+import emojis from "emojis.json"
 import useCreatePoll from "hooks/useCreatePoll"
 import useDiscordChannels from "hooks/useDiscordChannels"
-import useEmojis from "hooks/useEmojis"
 import useGuild from "hooks/useGuild"
 import useMyGuilds from "hooks/useMyGuilds"
 import useServerEmojis from "hooks/useServerEmojis"
@@ -111,13 +111,15 @@ const Guild = (): JSX.Element => {
     form.setFieldValue("platformId", platforms?.[0]?.platformId)
   }, [platforms])
 
-  const { data: emojis, isValidating: emojisValidating } = useEmojis()
   const { data: serverEmojis, isValidating: serverEmojisValidating } =
     useServerEmojis(
       form?.values?.platform === "DISCORD" ? form?.values?.platformId : null
     )
   const mergedEmojis = useMemo(
-    () => (serverEmojis ?? [])?.concat(emojis ?? []),
+    () =>
+      (serverEmojis ?? [])?.concat(
+        emojis?.map((emoji) => ({ ...emoji, group: "Basic emojis" })) ?? []
+      ),
     [emojis, serverEmojis]
   )
 
@@ -303,7 +305,6 @@ const Guild = (): JSX.Element => {
                           placeholder="Select emoji"
                           required
                           disabled={
-                            emojisValidating ||
                             serverEmojisValidating ||
                             platforms?.[0]?.type === "TELEGRAM"
                           }

@@ -1,0 +1,354 @@
+[
+  {
+    "character": "😀",
+    "name": "grinning face"
+  },
+  {
+    "character": "😃",
+    "name": "grinning face with big eyes"
+  },
+  {
+    "character": "😄",
+    "name": "grinning face with smiling eyes"
+  },
+  {
+    "character": "😁",
+    "name": "beaming face with smiling eyes"
+  },
+  {
+    "character": "😆",
+    "name": "grinning squinting face"
+  },
+  {
+    "character": "😅",
+    "name": "grinning face with sweat"
+  },
+  {
+    "character": "🤣",
+    "name": "rolling on the floor laughing"
+  },
+  {
+    "character": "😂",
+    "name": "face with tears of joy"
+  },
+  {
+    "character": "🙂",
+    "name": "slightly smiling face"
+  },
+  {
+    "character": "🙃",
+    "name": "upside-down face"
+  },
+  {
+    "character": "😉",
+    "name": "winking face"
+  },
+  {
+    "character": "😊",
+    "name": "smiling face with smiling eyes"
+  },
+  {
+    "character": "😇",
+    "name": "smiling face with halo"
+  },
+  {
+    "character": "🥰",
+    "name": "smiling face with 3 hearts"
+  },
+  {
+    "character": "😍",
+    "name": "smiling face with heart-eyes"
+  },
+  {
+    "character": "🤩",
+    "name": "star-struck"
+  },
+  {
+    "character": "😘",
+    "name": "face blowing a kiss"
+  },
+  {
+    "character": "😗",
+    "name": "kissing face"
+  },
+  {
+    "character": "☺",
+    "name": "smiling face"
+  },
+  {
+    "character": "😚",
+    "name": "kissing face with closed eyes"
+  },
+  {
+    "character": "😙",
+    "name": "kissing face with smiling eyes"
+  },
+  {
+    "character": "😋",
+    "name": "face savoring food"
+  },
+  {
+    "character": "😛",
+    "name": "face with tongue"
+  },
+  {
+    "character": "😜",
+    "name": "winking face with tongue"
+  },
+  {
+    "character": "🤪",
+    "name": "zany face"
+  },
+  {
+    "character": "😝",
+    "name": "squinting face with tongue"
+  },
+  {
+    "character": "🤑",
+    "name": "money-mouth face"
+  },
+  {
+    "character": "🤗",
+    "name": "hugging face"
+  },
+  {
+    "character": "🤭",
+    "name": "face with hand over mouth"
+  },
+  {
+    "character": "🤫",
+    "name": "shushing face"
+  },
+  {
+    "character": "🤔",
+    "name": "thinking face"
+  },
+  {
+    "character": "🤐",
+    "name": "zipper-mouth face"
+  },
+  {
+    "character": "🤨",
+    "name": "face with raised eyebrow"
+  },
+  {
+    "character": "😐",
+    "name": "neutral face"
+  },
+  {
+    "character": "😑",
+    "name": "expressionless face"
+  },
+  {
+    "character": "😶",
+    "name": "face without mouth"
+  },
+  {
+    "character": "😏",
+    "name": "smirking face"
+  },
+  {
+    "character": "😒",
+    "name": "unamused face"
+  },
+  {
+    "character": "🙄",
+    "name": "face with rolling eyes"
+  },
+  {
+    "character": "😬",
+    "name": "grimacing face"
+  },
+  {
+    "character": "🤥",
+    "name": "lying face"
+  },
+  {
+    "character": "😌",
+    "name": "relieved face"
+  },
+  {
+    "character": "😔",
+    "name": "pensive face"
+  },
+  {
+    "character": "😪",
+    "name": "sleepy face"
+  },
+  {
+    "character": "🤤",
+    "name": "drooling face"
+  },
+  {
+    "character": "😴",
+    "name": "sleeping face"
+  },
+  {
+    "character": "😷",
+    "name": "face with medical mask"
+  },
+  {
+    "character": "🤒",
+    "name": "face with thermometer"
+  },
+  {
+    "character": "🤕",
+    "name": "face with head-bandage"
+  },
+  {
+    "character": "🤢",
+    "name": "nauseated face"
+  },
+  {
+    "character": "🤮",
+    "name": "face vomiting"
+  },
+  {
+    "character": "🤧",
+    "name": "sneezing face"
+  },
+  {
+    "character": "🥵",
+    "name": "hot face"
+  },
+  {
+    "character": "🥶",
+    "name": "cold face"
+  },
+  {
+    "character": "🥴",
+    "name": "woozy face"
+  },
+  {
+    "character": "😵",
+    "name": "dizzy face"
+  },
+  {
+    "character": "🤯",
+    "name": "exploding head"
+  },
+  {
+    "character": "🤠",
+    "name": "cowboy hat face"
+  },
+  {
+    "character": "🥳",
+    "name": "partying face"
+  },
+  {
+    "character": "😎",
+    "name": "smiling face with sunglasses"
+  },
+  {
+    "character": "🤓",
+    "name": "nerd face"
+  },
+  {
+    "character": "🧐",
+    "name": "face with monocle"
+  },
+  {
+    "character": "😕",
+    "name": "confused face"
+  },
+  {
+    "character": "😟",
+    "name": "worried face"
+  },
+  {
+    "character": "🙁",
+    "name": "slightly frowning face"
+  },
+  {
+    "character": "☹",
+    "name": "frowning face"
+  },
+  {
+    "character": "😮",
+    "name": "face with open mouth"
+  },
+  {
+    "character": "😯",
+    "name": "hushed face"
+  },
+  {
+    "character": "😲",
+    "name": "astonished face"
+  },
+  {
+    "character": "😳",
+    "name": "flushed face"
+  },
+  {
+    "character": "🥺",
+    "name": "pleading face"
+  },
+  {
+    "character": "😦",
+    "name": "frowning face with open mouth"
+  },
+  {
+    "character": "😧",
+    "name": "anguished face"
+  },
+  {
+    "character": "😨",
+    "name": "fearful face"
+  },
+  {
+    "character": "😰",
+    "name": "anxious face with sweat"
+  },
+  {
+    "character": "😥",
+    "name": "sad but relieved face"
+  },
+  {
+    "character": "😢",
+    "name": "crying face"
+  },
+  {
+    "character": "😭",
+    "name": "loudly crying face"
+  },
+  {
+    "character": "😱",
+    "name": "face screaming in fear"
+  },
+  {
+    "character": "😖",
+    "name": "confounded face"
+  },
+  {
+    "character": "😣",
+    "name": "persevering face"
+  },
+  {
+    "character": "😞",
+    "name": "disappointed face"
+  },
+  {
+    "character": "😓",
+    "name": "downcast face with sweat"
+  },
+  {
+    "character": "😩",
+    "name": "weary face"
+  },
+  {
+    "character": "😫",
+    "name": "tired face"
+  },
+  {
+    "character": "😤",
+    "name": "face with steam from nose"
+  },
+  {
+    "character": "😡",
+    "name": "pouting face"
+  },
+  {
+    "character": "😠",
+    "name": "angry face"
+  }
+]
