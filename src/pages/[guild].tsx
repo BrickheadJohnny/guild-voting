@@ -81,7 +81,7 @@ const Guild = (): JSX.Element => {
   })
 
   const submitButtonDisabled = (): boolean =>
-    !form?.values?.channelId ||
+    (form?.values?.platform === "DISCORD" && !form?.values?.channelId) ||
     !form?.values?.requirementId ||
     !form?.values?.pollDuration?.every((value) => !!value) ||
     form?.values?.options?.length < 2 ||
