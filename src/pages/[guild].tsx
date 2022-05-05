@@ -324,6 +324,9 @@ const Guild = (): JSX.Element => {
                               borderWidth: 1,
                               borderColor: theme.colors.dark[7],
                             },
+                            separator: {
+                              maxWidth: "100%",
+                            },
                           })}
                         />
                         <ActionIcon
