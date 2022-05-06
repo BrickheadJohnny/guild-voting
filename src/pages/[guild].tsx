@@ -12,7 +12,7 @@ import {
   Text,
   Textarea,
   TextInput,
-  Title,
+  Title
 } from "@mantine/core"
 import { DateRangePicker } from "@mantine/dates"
 import { formList, useForm } from "@mantine/form"

@@ -15,7 +15,7 @@ const preparePayload = (data: CreateVotingForm): CreateVotingPayload => {
   return {
     platform: data.platform,
     platformId: data.platformId,
-    channelId: "948849405295992885",
+    channelId: data.channelId,
     requirementId: data.requirementId,
     question: data.question,
     startDate: parseInt((startDate.getTime() / 1000).toString()).toString(),
